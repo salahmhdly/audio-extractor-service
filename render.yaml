@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: audio-extractor-service
+    env: python
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn app:app"
+    plan: free # أو 'starter' إذا كنت تستخدم الخطة المدفوعة
+    buildpacks:
+      - heroku/python
+      - https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git
